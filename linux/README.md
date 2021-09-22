@@ -23,12 +23,15 @@ Commands that are used often:
 
 `Directory` Description
 
-- `/` Primary hierarchy root and root directory of the entire file system hierarchy.
-- `/bin` Essential command binaries that need to be available in single-user mode; for all users, e.g., cat, ls, cp.
-  `/boot` Boot loader files, e.g., kernels, initrd.
-  `/dev`
+- `/`
+  Primary hierarchy root and root directory of the entire file system hierarchy.
+- `/bin`
+  Essential command binaries that need to be available in single-user mode; for all users, e.g., cat, ls, cp.
+- `/boot`
+  Boot loader files, e.g., kernels, initrd.
+- `/dev`
   Device files, e.g., /dev/null , /dev/disk0 , /dev/sda1 , /dev/tty , /dev/random.
-  `/etc`
+- `/etc`
   Host-specific system-wide configuration files.
   There has been controversy over the meaning of the name itself. In early versions of the UNIX Implementation Document from Bell labs, /etc is referred to as the etcetera directory, as this directory historically held everything that did not belong elsewhere (however, the FHS restricts /etc to static configuration files and may not contain binaries). Since the publication of early documentation, the directory name has been re-explained in various ways. Recent interpretations include acronyms such as "Editable Text Configuration" or "Extended Tool Chest."
   `/etc/opt`
