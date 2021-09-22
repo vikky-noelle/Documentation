@@ -13,11 +13,13 @@ Linux was designed to be similar to UNIX but has been evolved to run in phones t
 In Linux, everything is either a file or a process. The file is the source of a stream of data.
 On the other hand is just a program that is currently running, a file stores the instructions that are executed for that process to run.
 
-Listing Files & Directories
+## Listing Files & Directories
+
 Commands that are used often:
-`ls` a command that lists out all the files in a directory.
-`ls -ll` tag gives detailed information about the directory/files along with reading, write rights on the file, owner, and when the file was created.
-`ls -A` gives the list of all files including the hidden ones.
+
+- `ls` a command that lists out all the files in a directory.
+- `ls -ll` tag gives detailed information about the directory/files along with reading, write rights on the file, owner, and when the file was created.
+- `ls -A` gives the list of all files including the hidden ones.
 
 ## The Directory Structure
 
@@ -124,72 +126,89 @@ The current directory and parent directory can be relatively symbolized as doubl
 They are usually hard links present in every directory and are hidden hence not shown in normal ls command but can be seen in ls -a.
 
 If you don’t understand how it will be used, refer to the next section and read it combined with this.
-Changing Directories & Pathnames
+
+## Changing Directories & Pathnames
+
 Consider this directory structure.
 
 <pre>
 |---Folder1
 |---Folder2---|----ChildFolder1
-|             |---ChildFolder2
+|             |----ChildFolder2
 </pre>
 
-There are two ways you can change directories.
-Providing the absolute path to the directory, that is saying Folder2/ChildFolder1.
-Typically it would look like cd /home/Folder2/ChildFolder1.
-Providing a relative path is where the previous section comes in. Let us assume that we are in Folder2
-You can access ChildFolder1 by cd ./ChildFolder1.
-You can access Folder1 by cd ../Folder1.
-Copying Files
+### There are two ways you can change directories.
+
+- Providing the absolute path to the directory, that is saying `Folder2/ChildFolder1`.
+  Typically it would look like `cd /home/Folder2/ChildFolder1`.
+- Providing a relative path is where the previous section comes in. Let us assume that we are in Folder2
+  You can access ChildFolder1 by `cd ./ChildFolder1`.
+  You can access Folder1 by `cd ../Folder1`.
+
+## Copying Files
+
 Copying files is fairly easy and can be done with the cp command, but the cp command can not copy directories, and if directories are to be copied use cp -R.
-Cp [source] [destination]
+`Cp [source] [destination]`
 
-cp example.txt ../folderOne
+`cp example.txt ../folderOne`
 The files can also be renamed while copying by simply giving a name with the destination for the file, the same holds for directories.
-cp example.txt ../folderOne/renamed.txt
-Moving Files
+`cp example.txt ../folderOne/renamed.txt`
+
+## Moving Files
+
 Moving files or directories are fairly easy and can be done with the mv command.
-mv [source] [destination]
+`mv [source] [destination]`
 
-mv example.txt ../folderOne
+`mv example.txt ../folderOne`
 The files can also be renamed while copying by simply giving a name with the destination for the file, the same holds for directories.
-mv example.txt ../folderOne/renamed.txt
-Removing Files and Directories
-Removing a file can be done with rm file_name.
-Removing a directory, given that it is empty can be done by either rm -d directory_name or rmdir directory_name.
-Removing a non-empty directory can be done by rm -R directory_name where -R stands for recursively which in turn means removing child folders and files first.
-Displaying the contents of a file
+`mv example.txt ../folderOne/renamed.txt`
+
+## Removing Files and Directories
+
+- Removing a file can be done with `rm file_name`.
+- Removing a directory, given that it is empty can be done by either `rm -d directory_name` or `rmdir` directory_name.
+- Removing a non-empty directory can be done by `rm -R directory_name` where `-R` stands for recursively which in turn means removing child folders and files first.
+
+## Displaying the contents of a file
+
 You can view the contents of the file using cat, less, more, and gnome-open.
 Use command[cat, less, more, gnome-open] filename.
 
-Cat example.txt
+`cat example.txt`
 
-Output [example.txt]
+**Output** [example.txt]
 
-This is an example.
-Searching Content In A File
-Searching in files can be done through the command line using grep.
-grep keyword1 keyword2
-You can ignore casing by using -i.
-grep -i keyword1
-You can use invert match to find files that do not have the string.
-grep -v keyword1
-You can use -c to count the result set.
-grep -c keyword1
-Redirection
+`This is an example.`
+
+## Searching Content In A File
+
+- Searching in files can be done through the command line using `grep`.
+  `grep keyword1 keyword2 filename`
+- You can ignore casing by using `-i`.
+  `grep -i keyword1`
+- You can use invert match to find files that do not have the string.
+  `grep -v keyword1`
+- You can use `-c` to count the result set.
+  `grep -c keyword1`
+
+## Redirection
+
 The work of any command is either taking input or gives an output or both. So, Linux has some command or special character to redirect these input and output functionalities. For example: suppose we want to run a command called “date” if we run it will print the output to the current terminal screen. But our requirement is different, we don’t want the output to be displayed on the terminal. We want the output to be saved in a file. This could be done very easily with output redirection. Redirection here simply means diverting the output or input.
-Types of Redirection
 
-1. Overwrite
+### Types of Redirection
 
-“>” standard output
-“<” standard input 2. Appends
+1.  Overwrite
 
-“>>” standard output
-“<<” standard input 3. Merge
-“p >& q” Merges output from stream p with stream q
-“p <& q” Merges input from stream p with stream q
-Command examples
-cat example.txt > output.txt
+        - > standard output
+        - < standard input 2. Appends
+
+        - >> standard output
+        - << standard input 3. Merge
+
+    “p >& q” Merges output from stream p with stream q
+    “p <& q” Merges input from stream p with stream q
+    Command examples
+    cat example.txt > output.txt
 
 cat < example.txt [overwrites the file]
 
