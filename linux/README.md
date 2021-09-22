@@ -245,16 +245,23 @@ To prevent running into problems with your file paths on your site, these are th
 
 You can use the `top` or `ps -aux` or `sudo ps -a` command to view the current processes.
 The **process ID** `PID` is essential to kill or control process on Linux. For example consider the following outputs:
+
 `root 1 0.0 0.0 225868 9760 ? Ss 19:10 0:13 /sbin/init splash`
+
 Where,
+
 `root` User name
+
 `1` PID (Linux process ID)
+
 `19:10` Process start time
+
 `/sbin/init splash` Actual process or command
 
 There may be too many processes. Hence, it uses the following less command/more command as a pipe to display process one screen at a time:
 
 `vivek@nixcraft:~$ ps -aux | more`
+
 `vivek@nixcraft:~$ sudo ps -aux | less`
 
 ## Killing A Process
@@ -273,7 +280,8 @@ Different signals can be sent to both kill commands. What signal you send will b
 Figure 3: The available kill signals.
 The most common kill signals are:
 
-Signal Name _Single Value_ **Effect**
+`Signal Name` _Single Value_ **Effect**
+
 `SIGHUP` _1_ **Hangup**
 SIGINT
 2
