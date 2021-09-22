@@ -282,152 +282,192 @@ The most common kill signals are:
 
 `Signal Name` _Single Value_ **Effect**
 
-`SIGHUP` _1_ **Hangup**
-SIGINT
-2
-Interrupt from keyboard
-SIGKILL
-9
-Kill signal
-SIGTERM
-15
-Termination signal
-SIGSTOP
-17, 19, 23
-Stop the process
+- `SIGHUP` _1_ **Hangup**
+- `SIGINT` _2_ **Interrupt from keyboard**
+- `SIGKILL` _9_ **Kill signal**
+- `SIGTERM` _15_ **Termination signal**
+- `SIGSTOP` _17, 19, 23_ **Stop the process**
 
 What’s nice about this is that you can use the Signal Value in place of the Signal Name. So you don’t have to memorize all of the names of the various signals.
 So, let’s now use the kill command to kill our instance of chrome. The structure for this command would be:
-kill SIGNAL PID
-Where SIGNAL is the signal to be sent and PID is the Process ID to be killed. We already know, from our ps command that the IDs we want to kill are 3827, 3919, 10764, and 11679. So to send the kill signal, we’d issue the commands:
-kill -9 3827
+`kill SIGNAL PID`
+Where SIGNAL is the signal to be sent and `PID` is the **Process ID** to be killed.
+We already know, from our ps command that the IDs we want to kill are `3827, 3919, 10764, and 11679`. So to send the kill signal, we’d issue the commands:
 
-kill -9 3919
+`kill -9 3827`
 
-kill -9 10764
+`kill -9 3919`
 
-kill -9 11679
+`kill -9 10764`
+
+`kill -9 11679`
+
 Once we’ve issued the above commands, all of the chrome processes will have been successfully killed.
-File System Security (Access Rights)
-The Linux security model is based on the one used on UNIX systems and is as rigid as the UNIX security model (and sometimes even more), which is already quite robust. On a Linux system, every file is owned by a user and a group user. There is also a third category of users, those that are not the user owner and don't belong to the group owning the file. For each category of users, read, write and execute permissions can be granted or denied.
-We already used the long option to list files using the ls -l command, though for other reasons. This command also displays file permissions for these three user categories; they are indicated by the nine characters that follow the first character, which is the file type indicator at the beginning of the file properties line. As seen in the examples below, the first three characters in this series of nine display access rights for the actual user that owns the file. The next three are for the group owner of the file, the last three are for other users. The permissions are always in the same order: read, write, execute for the user, the group, and the others. Some examples:
 
+## File System Security (Access Rights)
+
+The Linux security model is based on the one used on UNIX systems and is as rigid as the UNIX security model (and sometimes even more), which is already quite robust. On a Linux system, every file is owned by a user and a group user. There is also a third category of users, those that are not the user owner and don't belong to the group owning the file. For each category of users, read, write and execute permissions can be granted or denied.
+
+We already used the long option to list files using the `ls -l` command, though for other reasons. This command also displays file permissions for these three user categories; they are indicated by the nine characters that follow the first character, which is the file type indicator at the beginning of the file properties line. As seen in the examples below, the first three characters in this series of nine display access rights for the actual user that owns the file. The next three are for the group owner of the file, the last three are for other users. The permissions are always in the same order: read, write, execute for the user, the group, and the others. Some examples:
+
+<pre>
 marise:~> ls -l To_Do
 -rw-rw-r-- 1 marise users 5 Jan 15 12:39 To_Do
 marise:~> ls -l /bin/ls
 -rwxr-xr-x 1 root root 45948 Aug 9 15:01 /bin/ls\*
+</pre>
 
 The first file is a regular file (first dash). Users with user name Marise or users belonging to the group users can read and write (change/move/delete) the file, but they can't execute it (second and third dash). All other users are only allowed to read this file, but they can't write or execute it (fourth and fifth dash).
 The second example is an executable file, the difference: everybody can run this program, but you need to be root to change it.
 The Info pages explain how the ls command handles the display of access rights in detail, see the section What information is listed.
 For easy use with commands, both access rights or modes and user groups have a code. See the tables below.
-Access mode codes
-Code
-Meaning
-0 or -
-The access right that is supposed to be on this place is not granted.
-4 or r
-read access is granted to the user category defined in this place
-2 or w
-write permission is granted to the user category defined in this place
-1 or x
-execute permission is granted to the user category defined in this place
 
-Table 3-8. User group codes
-Code
-Meaning
-u
-user permissions
-g
-group permissions
-o
-permissions for others
+### Access mode codes
+
+`Code` Meaning
+
+- `0 or -`
+  The access right that is supposed to be on this place is not granted.
+- `4 or r`
+  read access is granted to the user category defined in this place
+- `2 or w`
+  write permission is granted to the user category defined in this place
+- `1 or x`
+  execute permission is granted to the user category defined in this place
+
+### User group codes
+
+`Code` Meaning
+
+- `u`
+  user permissions
+- `g`
+  group permissions
+- `o`
+  permissions for others
 
 This straightforward scheme is applied very strictly, which allows a high level of security even without network security. Among other functions, the security scheme takes care of user access to programs, it can serve files on a need-to-know basis and protect sensitive data such as home directories and system configuration files.
-The permission in the command line is displayed as \_rwxrwxrwx 1 owner: group
-User rights/Permissions
 
-1.1 The first character that I marked with an underscore is the special permission flag that can vary.
+The permission in the command line is displayed as `\_rwxrwxrwx 1 owner: group`
 
-1.2 The following set of three characters (rwx) is for the owner’s permission.
+### User rights/Permissions
 
-1.3 The second set of three characters (rwx) is for the Group permissions.
+1. The first character that I marked with an underscore is the special permission flag that can vary.
 
-1.4 The third set of three characters (rwx) is for the All Users permissions.
-Following that grouping since the integer/number displays the number of hard links to the file.
-The last piece is the Owner and Group assignment formatted as Owner: Group.
+2. The following set of three characters (rwx) is for the owner’s permission.
 
-Changing Access Rights
+3. The second set of three characters (rwx) is for the Group permissions.
+
+4. The third set of three characters (rwx) is for the All Users permissions.
+   Following that grouping since the integer/number displays the number of hard links to the file.
+   The last piece is the Owner and Group assignment formatted as Owner: Group.
+
+## Changing Access Rights
+
 To change directory permissions in Linux, use the following:
-chmod +rwx filename to add permissions.
-chmod -rwx directory name to remove permissions.
-chmod +x filename to allow executable permissions.
-chmod -wx filename to take out write and executable permissions.
-Note that “r” is for read, “w” is for write, and “x” is for execute.
+
+`chmod +rwx` filename to add permissions.
+
+`chmod -rwx` directory name to remove permissions.
+
+`chmod +x filename` to allow executable permissions.
+
+`chmod -wx filename` to take out write and executable permissions.
+
+Note that `r` is for read, `w` is for write, and `x` is for execute.
 This only changes the permissions for the owner of the file.
 
-How to Change Directory Permissions in Linux for the Group Owners and Others
-The command for changing directory permissions for group owners is similar, but add a “g” for group or “o” for users:
-chmod g+w filename
-chmod g-wx filename
-chmod o+w filename
-chmod o-rwx foldername
+### How to Change Directory Permissions in Linux for the Group Owners and Others
 
-To change directory permissions for everyone, use “u” for users, “g” for the group, “o” for others, and “ugo” or “a” (for all).
-chmod ugo+rwx folder name to give read, write, and execute to everyone.
-chmod a=r folder name to give only read permission for everyone.
-How to Change Groups of Files and Directories in Linux
+The command for changing directory permissions for group owners is similar, but add a `g` for group or `o` for users:
+
+<pre>
+chmod g+w filename
+
+chmod g-wx filename
+
+chmod o+w filename
+
+chmod o-rwx foldername
+</pre>
+
+To change directory permissions for everyone, use `u` for users, `g` for the group, `o` for others, and `ugo` or `a` (for all).
+
+`chmod ugo+rwx folder name` to give read, write, and execute to everyone.
+
+`chmod a=r folder name` to give only read permission for everyone.
+
+### How to Change Groups of Files and Directories in Linux
+
 By issuing these commands, you can change groups of files and directories in Linux.
-chgrp group name filename
-chgrp groupname foldername
+
+`chgrp group name filename`
+
+`chgrp groupname foldername`
+
 Note that the group must exit before you can assign groups to files and directories.
 
-How to Change Ownership in Linux
+### How to Change Ownership in Linux
+
 Another helpful command is changing ownerships of files and directories in Linux:
-chown name filename
-chown name foldername
+
+`chown name filename`
+
+`chown name foldername`
 
 These commands will give ownership to someone, but all sub files and directories still belong to the original owner.
-You can also combine the group and ownership command by using:
-chown -R name:filename /home/name/directoryname
 
-This command gives someone the ownership of the directory tsfiles, and all files and subfolders. The -R stands for recursive, which transfers ownership of all subdirectories to the new owner.
-How to Change Permissions in Numeric Code in Linux
-You may need to know how to change permissions in numeric code in Linux, so to do this you use numbers instead of “r”, “w”, or “x”.
-0 = No Permission
-1 = Execute
-2 = Write
-4 = Read
+You can also combine the group and ownership command by using:
+`chown -R name:filename /home/name/directoryname`
+
+This command gives someone the ownership of the directory tsfiles, and all files and subfolders. The `-R` stands for recursive, which transfers ownership of all subdirectories to the new owner.
+
+### How to Change Permissions in Numeric Code in Linux
+
+You may need to know how to change permissions in numeric code in Linux, so to do this you use numbers instead of `r`, `w`, or `x`.
+
+- 0 = No Permission
+- 1 = Execute
+- 2 = Write
+- 4 = Read
+
 You add up the numbers depending on the level of permission you want to give.
 
 Permission numbers are:
-0 = ---
-1 = --x
-2 = -w-
-3 = -wx
-4 = r-
-5 = r-x
-6 = rw-
-7 = rwx
+
+- 0 = ---
+- 1 = --x
+- 2 = -w-
+- 3 = -wx
+- 4 = r-
+- 5 = r-x
+- 6 = rw-
+- 7 = rwx
 
 For example:
-chmod 777 foldername will give read, write, and execute permissions for everyone.
-chmod 700 foldername will give read, write, and execute permissions for the user only.
-chmod 327 foldername will give write and execute (3) permission for the user, w (2) for the group, and read, write, and execute for the users.
 
-Shell Variables
+`chmod 777 foldername` will give read, write, and execute permissions for everyone.
+
+`chmod 700 foldername` will give read, write, and execute permissions for the user only.
+
+`chmod 327 foldername` will give write and execute (3) permission for the user, w (2) for the group, and read, write, and execute for the users.
+
+## Shell Variables
+
 Shell variables are variables that you define in an instance of shell, they disappear as soon as the shell is destroyed and are often defined as variable=value and accessed through echo $variable
 
 You can also unset these variables using the unset command unset variable_name.
-Other Useful Linux Commands
-Sudo su - is a command that takes you to the root and gives you absolute permission.
-Clear - is a command that clears the terminal of any content.
-Sudo - is a command that gives you root user rights, it can be used to run commands that need root permissions.
-Pwd - is a command that tells you the path to the current directory.
-which [filename1] [filename2] … - command in Linux is a command which is used to locate the executable file associated with the given command by searching it in the path environment variable. It has 3 return statuses as follows:
-0: If all specified commands are found and executable.
-1: If one or more specified commands is nonexistent or not executable.
-2: If an invalid option is specified.
-find - command
--sh tag lets you see the size of the files
-Dd if=/dev/zero of=ramu bs=1M count=10 will create a 10MB file with the name of Ramu.
+
+## Other Useful Linux Commands
+
+- `Sudo su` a command that takes you to the root and gives you absolute permission.
+- `Clear` a command that clears the terminal of any content.
+- `Sudo` a command that gives you root user rights, it can be used to run commands that need root permissions.
+- `Pwd` is a command that tells you the path to the current directory.
+- `which [filename1] [filename2] …` a command in Linux is a command which is used to locate the executable file associated with the given command by searching it in the path environment variable. It has 3 return statuses as follows:
+  `0` If all specified commands are found and executable.
+  `1` If one or more specified commands is nonexistent or not executable.
+  `2` If an invalid option is specified.
+- `find` command
+- `-sh` tag lets you see the size of the files
+- `Dd if=/dev/zero of=ramu bs=1M count=10` will create a 10MB file with the name of Ramu.
