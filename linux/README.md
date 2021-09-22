@@ -354,13 +354,14 @@ The permission in the command line is displayed as `\_rwxrwxrwx 1 owner: group`
 
 1. The first character that I marked with an underscore is the special permission flag that can vary.
 
-2. The following set of three characters (rwx) is for the owner’s permission.
+2. The following set of three characters `rwx` is for the owner’s permission.
 
-3. The second set of three characters (rwx) is for the Group permissions.
+3. The second set of three characters `rwx` is for the Group permissions.
 
-4. The third set of three characters (rwx) is for the All Users permissions.
-   Following that grouping since the integer/number displays the number of hard links to the file.
-   The last piece is the Owner and Group assignment formatted as Owner: Group.
+4. The third set of three characters `rwx` is for the All Users permissions.
+
+Following that grouping since the integer/number displays the number of hard links to the file.
+The last piece is the Owner and Group assignment formatted as Owner: Group.
 
 ## Changing Access Rights
 
