@@ -21,9 +21,12 @@ Commands that are used often:
 
 ## The Directory Structure
 
-Directory Description
+`Directory` Description
 
 `/` Primary hierarchy root and root directory of the entire file system hierarchy.
+
+---
+
 `/bin` Essential command binaries that need to be available in single-user mode; for all users, e.g., cat, ls, cp.
 `/boot` Boot loader files, e.g., kernels, initrd.
 `/dev`
