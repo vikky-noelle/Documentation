@@ -48,74 +48,77 @@ Commands that are used often:
   Libraries are essential for the binaries in /bin and /sbin.
 - `/lib<qual>`
   Alternative format essential libraries. Such directories are optional, but if they exist, they have some requirements.
-  /media
+- `/media`
   Mount points for removable media such as CD-ROMs (appeared in FHS-2.3 in 2004).
-  /mnt
+- `/mnt`
   Temporarily mounted filesystems.
-  /opt
+- `/opt`
   Optional application software packages.
-  /proc
+- `/proc`
   Virtual filesystem providing process and kernel information as files. In Linux, corresponds to a procfs mount. Generally automatically generated and populated by the system, on the fly.
-  /root
+- `/root`
   The home directory for the root user.
-  /run
+- `/run`
   Run-time variable data: Information about the running system since last boot, e.g., currently logged-in users and running daemons. Files under this directory must be either removed or truncated at the beginning of the boot process, but this is not necessary on systems that provide this directory as a temporary filesystem (tmpfs).
-  /sbin
+- `/sbin`
   Essential system binaries, e.g., fsck, init, route.
-  /srv
+- `/srv`
   Site-specific data served by this system, such as data and scripts for web servers, data offered by FTP servers, and repositories for version control systems (appeared in FHS-2.3 in 2004).
-  /sys
+- `/sys`
   Contains information about devices, drivers, and some kernel features.
-  /tmp
+- `/tmp`
   Temporary files (see also /var/tmp). Often not preserved between system reboots, and maybe severely size restricted.
-  /usr
+- `/usr`
   Secondary hierarchy for read-only user data; contains the majority of (multi-)user utilities and applications.
-  /usr/bin
+- `/usr/bin`
   Non-essential command binaries (not needed in single-user mode); for all users.
-  /usr/include
+- `/usr/include`
   Standard include files.
-  /usr/lib
+- `/usr/lib`
   Libraries for the binaries in /usr/bin and /usr/sbin.
-  /usr/lib<qual>
+- `/usr/lib<qual>`
   Alternative format libraries, e.g. /usr/lib32 for 32-bit libraries on a 64-bit machine (optional).
-  /usr/local
+- `/usr/local`
   Tertiary hierarchy for local data, specific to this host. Typically has further subdirectories, e.g., bin, lib, share.
-  /usr/sbin
+- `/usr/sbin`
   Non-essential system binaries, e.g., daemons for various network-services.
-  /usr/share
+- `/usr/share`
   Architecture-independent (shared) data.
-  /usr/src
+- `/usr/src`
   Source code, e.g., the kernel source code with its header files.
-  /usr/X11R6
+- `/usr/X11R6`
   X Window System, Version 11, Release 6 (up to FHS-2.3, optional).
-  /var
+- `/var`
   Variable files—files whose content is expected to continually change during normal operation of the system—such as logs, spool files, and temporary e-mail files.
-  /var/cache
+- `/var/cache`
   Application cache data. Such data are locally generated as a result of time-consuming I/O or calculation. The application must be able to regenerate or restore the data. The cached files can be deleted without loss of data.
-  /var/lib
+- `/var/lib`
   State information. Persistent data modified by programs as they run, e.g., databases, packaging system metadata, etc.
-  /var/lock
+- `/var/lock`
   Lock files. Files keeping track of resources currently in use.
-  /var/log
+- `/var/log`
   Log files. Various logs.
-  /var/mail
+- `/var/mail`
   Mailbox files. In some distributions, these files may be located in the deprecated /var/spool/mail.
-  /var/opt
+- `/var/opt`
   Variable data from add-on packages that are stored in /opt.
-  /var/run
+- `/var/run`
   Run-time variable data. This directory contains system information data describing the system since it was booted.
   In FHS 3.0, /var/run is replaced by /run ; a system should either continue to provide a /var/run directory, or provide a symbolic link from /var/run to /run , for backwards compatibility.
-  /var/spool
+- `/var/spool`
   Spool for tasks waiting to be processed, e.g., print queues and outgoing mail queue.
-  /var/spool/mail
+- `/var/spool/mail`
   Deprecated location for users' mailboxes.
-  /var/tmp
+- `/var/tmp`
   Temporary files to be preserved between reboots.
 
-Making directories
-mkdir directory_name is the command to make directories.
-E.g mkdir new_folder
-The Directories . and ..
+## Making directories
+
+`mkdir` directory_name is the command to make directories.
+E.g `mkdir new_folder`
+
+## The Directories . and ..
+
 There are 2 major things when you are going about the directories.
 The current directory and parent directory can be relatively symbolized as double dots and single dots respectively.
 They are usually hard links present in every directory and are hidden hence not shown in normal ls command but can be seen in ls -a.
@@ -123,9 +126,10 @@ They are usually hard links present in every directory and are hidden hence not 
 If you don’t understand how it will be used, refer to the next section and read it combined with this.
 Changing Directories & Pathnames
 Consider this directory structure.
-|---Folder1
-|---Folder2---|----ChildFolder1
-| |---ChildFolder2
+`|---Folder1`
+`|---Folder2---|----ChildFolder1`
+`|-------------|----ChildFolder2`
+
 There are two ways you can change directories.
 Providing the absolute path to the directory, that is saying Folder2/ChildFolder1.
 Typically it would look like cd /home/Folder2/ChildFolder1.
