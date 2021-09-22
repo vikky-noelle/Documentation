@@ -34,19 +34,19 @@ Commands that are used often:
 - `/etc`
   Host-specific system-wide configuration files.
   There has been controversy over the meaning of the name itself. In early versions of the UNIX Implementation Document from Bell labs, /etc is referred to as the etcetera directory, as this directory historically held everything that did not belong elsewhere (however, the FHS restricts /etc to static configuration files and may not contain binaries). Since the publication of early documentation, the directory name has been re-explained in various ways. Recent interpretations include acronyms such as "Editable Text Configuration" or "Extended Tool Chest."
-  `/etc/opt`
+- `/etc/opt`
   Configuration files for add-on packages that are stored in /opt .
-  `/etc/sgml`
+- `/etc/sgml`
   Configuration files, such as catalogs, for software that processes SGML.
-  `/etc/X11`
+- `/etc/X11`
   Configuration files for the X Window System, version 11.
-  `/etc/XML`
+- `/etc/XML`
   Configuration files, such as catalogs, for software that processes XML.
-  /home
+- `/home`
   Users' home directories, containing saved files, personal settings, etc.
-  /lib
+- `/lib`
   Libraries are essential for the binaries in /bin and /sbin.
-  /lib<qual>
+- `/lib<qual>`
   Alternative format essential libraries. Such directories are optional, but if they exist, they have some requirements.
   /media
   Mount points for removable media such as CD-ROMs (appeared in FHS-2.3 in 2004).
