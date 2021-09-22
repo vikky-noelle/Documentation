@@ -126,9 +126,12 @@ They are usually hard links present in every directory and are hidden hence not 
 If you don’t understand how it will be used, refer to the next section and read it combined with this.
 Changing Directories & Pathnames
 Consider this directory structure.
-`|---Folder1`
-`|---Folder2---|----ChildFolder1`
-`|-------------|----ChildFolder2`
+
+<pre>
+|---Folder1
+|---Folder2---|----ChildFolder1
+|             |---ChildFolder2
+</pre>
 
 There are two ways you can change directories.
 Providing the absolute path to the directory, that is saying Folder2/ChildFolder1.
