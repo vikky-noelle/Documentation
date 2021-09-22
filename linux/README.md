@@ -147,7 +147,7 @@ Consider this directory structure.
 
 ## Copying Files
 
-Copying files is fairly easy and can be done with the cp command, but the cp command can not copy directories, and if directories are to be copied use cp -R.
+Copying files is fairly easy and can be done with the cp command, but the cp command can not copy directories, and if directories are to be copied use `cp -R`.
 `Cp [source] [destination]`
 
 `cp example.txt ../folderOne`
@@ -199,69 +199,82 @@ The work of any command is either taking input or gives an output or both. So, L
 
 1.  Overwrite
 
-        - > standard output
-        - < standard input 2. Appends
+    `>` standard output
+    `<` standard input
 
-        - >> standard output
-        - << standard input 3. Merge
+2.  Appends
 
-    “p >& q” Merges output from stream p with stream q
-    “p <& q” Merges input from stream p with stream q
-    Command examples
-    cat example.txt > output.txt
+    `>>` standard output
+    `<<` standard input 3. Merge
 
-cat < example.txt [overwrites the file]
+    `p >& q` Merges output from stream p with stream q
+    `p <& q` Merges input from stream p with stream q
 
-cat << example.txt [appends in the file]
-Pipes
-A pipe is a form of redirection (transfer of standard output to some other destination) that is used in Linux and other Unix-like operating systems to send the output of one command/program/process to another command/program/process for further processing. The Unix/Linux systems allow stdout of a command to be connected to stdin of another command. You can make it do so by using the pipe character ‘|’.
+### Command examples
+
+`cat example.txt > output.txt`
+
+`cat < example.txt` overwrites the file
+
+`cat << example.txt` appends in the file
+
+## Pipes
+
+A pipe is a form of redirection (transfer of standard output to some other destination) that is used in Linux and other Unix-like operating systems to send the output of one command/program/process to another command/program/process for further processing. The Unix/Linux systems allow stdout of a command to be connected to stdin of another command. You can make it do so by using the pipe character `|`.
 
 Syntax :
-command_1 | command_2 | command_3 | .... | command_N
+`command_1 | command_2 | command_3 | .... | command_N`
 
-ls -l | more
+`ls -l | more`
 
-cat result.txt | grep "abc" | tee file2.txt | wc -l
+`cat result.txt | grep "abc" | tee file2.txt | wc -l`
+
 This command is used to display the content of result.txt and search for string abc and store the result in file2.txt and finally printing the line count.
-Filename Conventions
-To prevent running into problems with your file paths on your site, these are the following guidelines:
-Name all your files lower case.
-Instead of using a space, use an ( \_ ) or a ( – )
-Use consistent file types. Use jpg or jpg. Don’t use both.
-Only alphanumeric characters, periods, underscores, and hyphens and don’t use symbols like “%”, “$”, and so forth.
-Keep the file names short and descriptive.
-Viewing processes 
-You can use the  top or ps -aux or sudo ps -a  command to view the current processes.
-The process ID (PID) is essential to kill or control process on Linux. For example consider the following outputs:
-root         1  0.0  0.0 225868  9760 ?        Ss   19:10   0:13 /sbin/init splash
-Where,
-root – User name
-1 – PID (Linux process ID)
-19:10 – Process start time
-/sbin/init splash – Actual process or command
-There may be too many processes. Hence, it uses the following less command/more command as a pipe to display process one screen at a time:
-vivek@nixcraft:~$ ps -aux | more
-vivek@nixcraft:~$ sudo ps -aux | less
-Killing A Process
-Now we come to the task of killing the process. We have two pieces of information that will help us kill the errant process:
-Process name
 
-Process ID
+## Filename Conventions
+
+To prevent running into problems with your file paths on your site, these are the following guidelines:
+
+- Name all your files lower case.
+- Instead of using a space, use an `\_` or a `–`
+- Use consistent file types. Use jpg or jpg. Don’t use both.
+- Only alphanumeric characters, periods, underscores, and hyphens and don’t use symbols like `%`, `$`, and so forth.
+- Keep the file names short and descriptive.
+
+## Viewing processes
+
+You can use the `top` or `ps -aux` or `sudo ps -a` command to view the current processes.
+The **process ID** `PID` is essential to kill or control process on Linux. For example consider the following outputs:
+`root 1 0.0 0.0 225868 9760 ? Ss 19:10 0:13 /sbin/init splash`
+Where,
+`root` User name
+`1` PID (Linux process ID)
+`19:10` Process start time
+`/sbin/init splash` Actual process or command
+
+There may be too many processes. Hence, it uses the following less command/more command as a pipe to display process one screen at a time:
+
+`vivek@nixcraft:~$ ps -aux | more`
+`vivek@nixcraft:~$ sudo ps -aux | less`
+
+## Killing A Process
+
+Now we come to the task of killing the process. We have two pieces of information that will help us kill the errant process:
+
+- Process name
+- Process ID
 
 Which you use will determine the command used for termination. There are two commands used to kill a process:
-kill – Kill a process by ID
 
-killall – Kill a process by name
+- `kill` Kill a process by ID
+- `killall` Kill a process by name
 
-Different signals can be sent to both kill commands. What signal you send will be determined by what results in you want from the kill command. For instance, you can send the HUP (hangup) signal to the kill command, which will effectively restart the process. This is always a wise choice when you need the process to immediately restart (such as in the case of a daemon). You can get a list of all the signals that can be sent to the kill command by issuing kill -l. You’ll find quite a large number of signals (Figure 3).
+Different signals can be sent to both kill commands. What signal you send will be determined by what results in you want from the kill command. For instance, you can send the `HUP` (hangup) signal to the kill command, which will effectively restart the process. This is always a wise choice when you need the process to immediately restart (such as in the case of a daemon). You can get a list of all the signals that can be sent to the kill command by issuing kill -l. You’ll find quite a large number of signals (Figure 3).
 Figure 3: The available kill signals.
 The most common kill signals are:
-Signal Name
-Single Value
-Effect
-SIGHUP
-1
-Hangup
+
+Signal Name _Single Value_ **Effect**
+`SIGHUP` _1_ **Hangup**
 SIGINT
 2
 Interrupt from keyboard
