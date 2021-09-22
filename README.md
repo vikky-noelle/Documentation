@@ -6,4 +6,4 @@ Every Directory has a **README** file which is documentation on the name of the 
 
 Example:
 
-    `Linux --> Documenatation for linux`
+`Linux --> Documenatation for linux`
