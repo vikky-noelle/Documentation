@@ -472,3 +472,4 @@ You can also unset these variables using the unset command unset variable_name.
 - `find` command
 - `-sh` tag lets you see the size of the files
 - `Dd if=/dev/zero of=ramu bs=1M count=10` will create a 10MB file with the name of Ramu.
+- `free` gives information on processes, eg. `free -h` will give the ram usage.
