@@ -47,6 +47,9 @@ Docker is an open platform for developing, shipping, and running applications. D
 - `docker run [OPTIONS] IMAGE NAME [COMMAND] [ARG...]`
   This command is used to run images in the form of containers.
 
+  `docker run -v /dir/on/host:/dir/on/container -it ubuntu:14.04 `
+  You can use `-v` to map host volume with a container volume to retain data.
+
   **Note, docker run without `-t` is a container that does not have terminal drivers, hence it will fail to run terminal in such containers when you do a start. Containers that need bash should be run with `-t` tag.**
 
   Options:
