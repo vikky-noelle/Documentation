@@ -473,3 +473,4 @@ You can also unset these variables using the unset command unset variable_name.
 - `-sh` tag lets you see the size of the files
 - `Dd if=/dev/zero of=ramu bs=1M count=10` will create a 10MB file with the name of Ramu.
 - `free` gives information on processes, eg. `free -h` will give the ram usage.
+- `locate` command is also used to find files but it is not in real time and hence there is a lag between results. It is not enabled in systems by default. You can't use it to find files that were created a few minutes ago since locate is based upon indexing, and index is not updated in real time.
