@@ -459,6 +459,15 @@ Shell variables are variables that you define in an instance of shell, they disa
 
 You can also unset these variables using the unset command unset variable_name.
 
+## Compressing files TAR
+
+`tar` is a command that can be used to compress files or directories together or to copy multiple files together and move them at a place.
+
+example:
+`tar cf sample.tar direcory_or_filename`
+
+`gzip` command can be used to do the same.
+
 ## Finding files
 `find [where to start searching from] [expression determines what to find] [-options] [what to find]` 
 
@@ -481,6 +490,18 @@ The find command in UNIX is a command line utility for walking a file hierarchy.
   ! expr : True if ‘expr’ is false.
   </pre>
 
+## WildCards
+
+A character or string used for pattern searching.
+
+`*` and `?` are the 2 wildcards that are often used with commands such as `ls`.
+
+example
+
+`*.txt` can be used to list all the files that have an extension of `.txt`.
+
+**You can relate this to regex.**
+
 ## Other Useful Linux Commands
 
 - `Sudo su` a command that takes you to the root and gives you absolute permission.
@@ -495,3 +516,5 @@ The find command in UNIX is a command line utility for walking a file hierarchy.
 - `Dd if=/dev/zero of=ramu bs=1M count=10` will create a 10MB file with the name of Ramu.
 - `free` gives information on processes, eg. `free -h` will give the ram usage.
 - `locate` command is also used to find files but it is not in real time and hence there is a lag between results. It is not enabled in systems by default. You can't use it to find files that were created a few minutes ago since locate is based upon indexing, and index is not updated in real time.
+- `du` is used to see the size of a file, most common parameters are `-k` and `-h` to see the size in kb or human readable format respectively.
+- **Verbose** basically means more information and is often denoted by `-v`, check whether a command has the verbose feature in it or not because not every command supports it.
