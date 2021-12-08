@@ -295,3 +295,34 @@ Rest all is same as the replication controller.
   1. kubectl delete rs nginx-rs
   2. kubectl delete -f nginx-rs.yml 
   ```
+
+## Difference between Deployment and Replica Set
+
+Deployment works one level above ReplicaSet object. Deployment is recommended for application services.
+
+With deployment you should be able to do rolling upgrade or rollback. You can update image from v1 to v2.
+
+With ReplicaSet you define number of replicas you want to run. For a particular service. You would have those many replicas running.
+
+[Kubernetes rollout and upgrades example](https://learnk8s.io/kubernetes-rollbacks)
+
+## Services
+
+### Cluster IP
+
+A service that helps with communication between pods irrespective of what their IP address is, is called cluster IP
+
+  <pre>
+  apiVersion: v1
+  kind: Service
+  metaData:
+    name: back-end
+  spec:
+    type: ClusterIP
+    ports:
+      - targetPort: 80 //basically the port where the container is exposed
+        ports: 80 //basically the port where the service will be exposed
+    selector:
+      app: myApp
+      type: back-end
+  </pre>
